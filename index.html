@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Gracefully handle and suppress MetaMask/wallet extension errors inside the sandbox iframe -->
+    <script>
+      (function() {
+        const originalConsoleError = console.error;
+        console.error = function(...args) {
+          const errMsg = args.map(arg => String(arg)).join(" ");
+          if (errMsg.includes("MetaMask") || errMsg.includes("ethereum") || errMsg.includes("wallet") || errMsg.includes("provider")) {
+            return;
+          }
+          originalConsoleError.apply(console, args);
+        };
+
+        window.addEventListener("unhandledrejection", function(event) {
+          const reason = event.reason;
+          if (reason) {
+            const reasonStr = String(reason.message || reason);
+            if (reasonStr.includes("MetaMask") || reasonStr.includes("ethereum") || reasonStr.includes("wallet") || reasonStr.includes("provider")) {
+              event.preventDefault();
+            }
+          }
+        });
+
+        window.addEventListener("error", function(event) {
+          const errMsg = String(event.message || event.error);
+          if (errMsg.includes("MetaMask") || errMsg.includes("ethereum") || errMsg.includes("wallet") || errMsg.includes("provider")) {
+            event.preventDefault();
+          }
+        });
+      })();
+    </script>
+    
+    <!-- Primary Meta Tags -->
+    <title>Universal Boxing Club | Premier Boxing Gym in Karachi, Pakistan</title>
+    <meta name="description" content="Train Like a Champion at Universal Boxing Club, Falaknaz Tower, Karachi. Premier boxing gym in Karachi offering classes for beginners, fitness boxing, and kids training." />
+    <meta name="keywords" content="Boxing Gym in Karachi, Boxing Classes Karachi, Fitness Boxing Pakistan, Kids Boxing Training, Professional Boxing Gym, Universal Boxing Club, Boxing Training Shah Faisal Colony, Boxing Fitness Center" />
+    <meta name="author" content="Universal Boxing Club" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://universalboxingclub.pk/" />
+    <meta property="og:title" content="Universal Boxing Club | Train Like a Champion in Karachi" />
+    <meta property="og:description" content="Build strength, confidence, speed, and discipline at Universal Boxing Club, Falaknaz Tower, Karachi. Join today and train under Coach Talha and our staff." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&q=80&w=1200" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Universal Boxing Club | Train Like a Champion in Karachi" />
+    <meta property="twitter:description" content="Build strength, confidence, speed, and discipline at Universal Boxing Club. Beginners and kids classes available." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- LocalBusiness Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsActivityLocation",
+        "name": "Universal Boxing Club",
+        "image": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&q=80&w=1200",
+        "telephone": "+923221232815",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Falaknaz Tower, Shahra-e-Faisal, Moria Khan Goth, Shah Faisal Colony, Shah Faisal Town",
+          "addressLocality": "Karachi",
+          "addressRegion": "Sindh",
+          "postalCode": "75230",
+          "addressCountry": "PK"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "24.891823",
+          "longitude": "67.143224"
+        },
+        "url": "https://universalboxingclub.pk",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "19:00",
+          "closes": "23:59"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "reviewCount": "8",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-[#0b0c10] text-[#c5c6c7] selection:bg-red-600 selection:text-white overflow-x-hidden antialiased scroll-smooth">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

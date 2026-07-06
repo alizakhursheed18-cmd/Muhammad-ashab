@@ -1,0 +1,6 @@
+{
+  "name": "Universal Boxing Club",
+  "description": "Universal Boxing Club is Karachi's premier boxing gym located at Falaknaz Tower, Pakistan. Offering specialized classes in Beginner Boxing, Advanced Boxing, Women's Training, Kids Classes, and Personal Coaching in a premium, dark-themed training facility. Train like a champion!",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
